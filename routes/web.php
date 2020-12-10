@@ -17,5 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello-world', 'TestController@helloWorld');
 Route::get('/about-me', 'AboutController@aboutMe');
+
+//main
+// Route::get('/', 'MainConroller@start')->name('start.page');
+Route::get('/overzicht', 'Maincontroller@overzicht')->name('overzicht.page');
+Route::get('/info', 'MainController@infoJoey')->name('info.aboutme');
+Route::get('/project', 'MainController@myProjects')->name('project.info');    
+//Form
+Route::get('/contact', 'FormController@formContact' )->name('from.contact');
+Route::post('/contact-request', 'FormController@formHandle' )->name('from.handle');
