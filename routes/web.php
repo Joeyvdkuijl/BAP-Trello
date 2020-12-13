@@ -27,3 +27,7 @@ Route::get('/project', 'MainController@myProjects')->name('project.info');
 //Form
 Route::get('/contact', 'FormController@formContact' )->name('from.contact');
 Route::post('/contact-request', 'FormController@formHandle' )->name('from.handle');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

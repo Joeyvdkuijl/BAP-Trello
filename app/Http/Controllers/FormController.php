@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class FormController extends Controller
 {
     public function formContact() {
-        return view('form');
+        return view('form.form');
     }
 
     public function formHandle(Request $request) {
