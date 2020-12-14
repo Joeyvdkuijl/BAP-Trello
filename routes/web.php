@@ -24,6 +24,11 @@ Route::get('/about-me', 'AboutController@aboutMe');
 Route::get('/overzicht', 'Maincontroller@overzicht')->name('overzicht.page');
 Route::get('/info', 'MainController@infoJoey')->name('info.aboutme');
 Route::get('/project', 'MainController@myProjects')->name('project.info');    
+Route::get('/project-detail/{jaar}/{id}', 'ProjectDetailController@showDetail')->name('project.detail');
+Route::get('/blog/{post}/{id}', 'BlogController@theBlog')->name('all.blogs');
+Route::get('/social/{id}', 'SocialController@mySocials')->name('info.social');
+Route::get('/review/{id}', 'BlogController@reviewBlog')->name('review.detail');
+Route::get('/question/{id}', 'BlogController@questionBLog')->name('question.detail');
 //Form
 Route::get('/contact', 'FormController@formContact' )->name('from.contact');
 Route::post('/contact-request', 'FormController@formHandle' )->name('from.handle');
