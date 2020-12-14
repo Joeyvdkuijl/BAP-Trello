@@ -1,7 +1,7 @@
 @extends('../layouts/layout')
 
 
-@section('review')
+@section('content')
     review
     <h5>{{$id}}</h5>
 @endsection

@@ -1,7 +1,7 @@
 @extends('../layouts/layout')
 
 
-@section('socials')
+@section('content')
     socials
     <h5>{{$id}}</h5>
 @endsection

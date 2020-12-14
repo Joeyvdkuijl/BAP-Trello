@@ -1,7 +1,7 @@
 @extends('../layouts/layout')
 
 
-@section('question')
+@section('content')
     question
     <h5>{{$id}}</h5>
 @endsection

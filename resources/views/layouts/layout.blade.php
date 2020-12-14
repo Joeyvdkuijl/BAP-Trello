@@ -19,11 +19,10 @@
 
     @yield('article')
 
-    @yield('project_detail')
-
-    @yield('socials')
-    @yield('question')
-    @yield('review')
+    {{-- @yield('project_detail') --}}
+    {{-- @yield('socials') --}}
+    {{-- @yield('question')
+    @yield('review') --}}
     @yield('blog')
 
     <!-- Optional JavaScript -->
