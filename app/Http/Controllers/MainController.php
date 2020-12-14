@@ -8,10 +8,10 @@ class MainController extends Controller
 {
     public function overzicht()
     {
-        return view('overzicht.overzicht');
+        return view('blog.overzicht');
     }
     public function infoJoey() 
     {
-        return view('info.info');
+        return view('blog.info');
     }
 }
