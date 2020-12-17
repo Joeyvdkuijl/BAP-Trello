@@ -16,10 +16,13 @@ class MainController extends Controller
     {
         return view('blog.info');
     }
+    public function myProjects() 
+    {
+        return view('blog.project.project');
+    }
     public function myInfo() 
     {
-        $user = User::all();
-
-        return view('blog.infoUser', ['gebruiker' => $user]);
+        $users = DB::select('select * from users');
+        return view('blog.infoUser',['users'=>$users]);
     }
 }

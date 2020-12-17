@@ -7,10 +7,39 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    {{-- <link rel="stylesheet" href="{{ asset('css/') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <title>@yield("page_title")</title>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{ route('overzicht.page') }}">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link homebtn {{ Route::currentRouteName() == "info.aboutme" ? 'active' : '' }}" href="{{ route('info.aboutme') }}">Info</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link homebtn  {{ Route::currentRouteName() == "project.info" ? 'active' : '' }}" href="{{ route('project.info') }}">Project</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link homebtn  {{ Route::currentRouteName() == "from.contact" ? 'active' : '' }}" href="{{ route('from.contact') }}">Contact</a>
+          </li>
+        </ul>      
+          <a class="nav-link my-2 my-lg-0"  href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+           Logout
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+           @csrf
+          </form>
+      </div>
+    </nav>
+  
     @yield("content")
 
     @yield('overzicht')
