@@ -4,6 +4,6 @@
     Overzicht-overblog
 @endsection
 
-{{-- @section('overzicht')
+@section('overzicht')
 
-@endsection --}}
+@endsection
