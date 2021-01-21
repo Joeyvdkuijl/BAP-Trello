@@ -8,9 +8,14 @@ use App\User;
 
 class MainController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function overzicht()
     {
-        $posts = BlogPost::all();
+        $posts = BlogPost::paginate(10);
         return view('blog.overzicht', [ 'posts'=>$posts]);
     }
     public function infoJoey() 

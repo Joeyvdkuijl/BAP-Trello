@@ -17,7 +17,7 @@ class BlogAddController extends Controller
     public function index()
     {
         // $blogpost = BlogPost::all();
-        $blogpost = BlogPost::paginate(20);
+        $blogpost = BlogPost::paginate(10);
 
         return view('overzicht.page', ['posts' => $blogpost]);
 

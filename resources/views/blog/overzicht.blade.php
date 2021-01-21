@@ -15,5 +15,7 @@
         </tr>
     @endforeach
 </table>
-{{ $posts->links() }}
+<div style="margin-left: 2%">
+    {{ $posts->links() }}
+</div>
 @endsection
