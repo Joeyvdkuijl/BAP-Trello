@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\BlogPost;
 use Illuminate\Http\Request;
-
 use Egulias\EmailValidator;
+
 
 class BlogAddController extends Controller
 {
@@ -15,7 +16,11 @@ class BlogAddController extends Controller
      */
     public function index()
     {
-        //
+        // $blogpost = BlogPost::all();
+        $blogpost = BlogPost::paginate(20);
+
+        return view('overzicht.page', ['posts' => $blogpost]);
+
     }
 
     /**
@@ -26,6 +31,7 @@ class BlogAddController extends Controller
     public function create()
     {
         return view('blog.blogAdd');
+
     }
 
     /**
@@ -36,18 +42,27 @@ class BlogAddController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(
+        $data = $request->validate(
             [
-                'firstname' => 'required|min:2',
-                'lastname' => 'required|min:2',
+                'fullname' => 'required|min:2',
                 'email' => 'required|email:rfc,dns',
-                'subject' => 'required',
+                'title' => 'required',
                 'blog_post' => 'required|min:10',
                 'pub_date' => 'required|after_or_equal:today'
             ]
             );
+        // $blog = new BlogPost();
+        // $blog->title=$data['title'];
+        // $blog->inhoud=$data['blog_post'];
+        // $blog->firstname=$data['firstname'];
+        // $blog->lastname=$data['lastname'];
+        // $blog->date=$data['pub_date'];
+        // $blog->email=$data['email'];
+        // $blog->save();
 
-        return 'gegevens opslaan in de database';
+        $blogpost = BlogPost::create($data);
+
+        return redirect()->route('overzicht.page');
     }
 
     /**

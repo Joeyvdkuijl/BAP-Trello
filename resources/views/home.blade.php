@@ -16,6 +16,11 @@
 
                     {{ route('overzicht.page') }}
                 </div>
+            <div>
+                {{-- @foreach($posts as $post)
+                    {{ $post->titel }}
+                @endforeach --}}
+            </div>
             </div>
         </div>
     </div>

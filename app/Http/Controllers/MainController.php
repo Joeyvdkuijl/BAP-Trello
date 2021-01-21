@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
@@ -10,7 +10,8 @@ class MainController extends Controller
 {
     public function overzicht()
     {
-        return view('blog.overzicht');
+        $posts = BlogPost::all();
+        return view('blog.overzicht', [ 'posts'=>$posts]);
     }
     public function infoJoey() 
     {
