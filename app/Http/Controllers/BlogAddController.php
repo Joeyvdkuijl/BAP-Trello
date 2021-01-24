@@ -35,7 +35,11 @@ class BlogAddController extends Controller
     public function create()
     {
         return view('blog.blogAdd');
+    }
 
+    public function editform($id) {
+        $blogpost = BlogPost::where('id', $id)->get();
+        return view('blog.edit', ['blog' => $blogpost]);
     }
 
     /**
@@ -46,9 +50,6 @@ class BlogAddController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
         $data = $request->validate(
             [
                 'fullname' => 'required|min:2',
@@ -58,20 +59,10 @@ class BlogAddController extends Controller
                 'pub_date' => 'required|after_or_equal:today',
                 'image' => 'image'
             ]
-            );
-            $newFilename =  $data['image']->store('posts', 'public');
-            $data['image'] = $newFilename;
-        // $blog = new BlogPost();
-        // $blog->title=$data['title'];
-        // $blog->inhoud=$data['blog_post'];
-        // $blog->firstname=$data['firstname'];
-        // $blog->lastname=$data['lastname'];
-        // $blog->date=$data['pub_date'];
-        // $blog->email=$data['email'];
-        // $blog->save();
-
+        );
+        $newFilename =  $data['image']->store('posts', 'public');
+        $data['image'] = $newFilename;
         BlogPost::create($data);
-
         return redirect()->route('overzicht.page');
     }
 
@@ -83,8 +74,8 @@ class BlogAddController extends Controller
      */
     public function show($id)
     {
-        // $post = BlogPost::find($id);
-        // return view('blog.detail', ['post' => $post]);
+        $post = BlogPost::find($id);
+        return view('blog.detail', ['post' => $post]);
     }
 
     /**
@@ -93,9 +84,22 @@ class BlogAddController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Request $request)
     {
-        //
+        $data = $request->validate(
+            [
+                'fullname' => 'required|min:2',
+                'email' => 'required|email:rfc,dns',
+                'title' => 'required',
+                'blog_post' => 'required|min:10',
+            ]
+        );
+
+        BlogPost::where('id', $id)->update($data);
+
+        $post = BlogPost::paginate(9);
+
+        return view('blog.overzicht', ['posts' => $post]);
     }
 
     /**
@@ -119,5 +123,12 @@ class BlogAddController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function delete($id) {
+        BlogPost::where('id', $id)->delete();
+
+        // $post = BlogPost::paginate(9);
+        return redirect()->route('overzicht.page', ['id' => $id]);
     }
 }

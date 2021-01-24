@@ -14,10 +14,25 @@
     width: 400px;
 }
 .detail{
-    width: 100px;
+    width: 80px;
     position: absolute;
     bottom: 10px;
     right: 10px;
+    text-align: center;
+}
+.detail2{
+    width: 80px;
+    position: absolute;
+    bottom: 10px;
+    right: 95px;
+    text-align: center;
+}
+.detail3{
+    width: 80px;
+    position: absolute;
+    bottom: 10px;
+    right: 180px;
+    text-align: center;
 }
 body{
     color: #1a202c;

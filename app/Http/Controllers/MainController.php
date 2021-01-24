@@ -8,16 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
-
     public function overzicht()
     {
         $posts = BlogPost::paginate(9);
         return view('blog.overzicht', [ 'posts'=>$posts]);
     }
-    public function detail($id)
+    // public function detail($id)
+    // {
+    //     $post = BlogPost::find($id);
+    //     return view('blog.detail', ['post' => $post]);
+    // }
+    public function edit($id)
     {
-        $post = BlogPost::find($id);
-        return view('blog.detail', ['post' => $post]);
+
     }
     public function infoJoey() 
     {

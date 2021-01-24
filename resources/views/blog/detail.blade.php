@@ -20,6 +20,7 @@
                 <p><b>Designer:</b> {{$post->fullname}}</p>
             </div><!-- / project-info-box -->
         </div><!-- / column -->
+        
         <div class="col-md-7">
             <img style="max-height: 500px; max-width: 500px;" src="{{ asset('storage/' . $post->image) }}" alt="project-image" class="rounded">
         </div><!-- / column -->
