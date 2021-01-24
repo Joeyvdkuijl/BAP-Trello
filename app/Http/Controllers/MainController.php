@@ -4,31 +4,27 @@ namespace App\Http\Controllers;
 use App\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     public function overzicht()
     {
-        $posts = BlogPost::paginate(10);
+        $posts = BlogPost::paginate(9);
         return view('blog.overzicht', [ 'posts'=>$posts]);
+    }
+    public function detail($id)
+    {
+        $post = BlogPost::find($id);
+        return view('blog.detail', ['post' => $post]);
     }
     public function infoJoey() 
     {
         return view('blog.info');
     }
-    public function myProjects() 
-    {
-        return view('blog.project.project');
-    }
-    public function myInfo() 
-    {
-        $users = DB::select('select * from users');
-        return view('blog.infoUser',['users'=>$users]);
-    }
+    // public function myProjects() 
+    // {
+    //     return view('blog.project.project');
+    // }
 }

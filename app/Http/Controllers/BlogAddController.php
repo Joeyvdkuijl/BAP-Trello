@@ -14,15 +14,19 @@ class BlogAddController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         // $blogpost = BlogPost::all();
-        $blogpost = BlogPost::paginate(10);
-
-        return view('overzicht.page', ['posts' => $blogpost]);
+        // $blogpost = BlogPost::paginate(10);
+        // return view('blog.overzicht', ['posts' => $blogpost]);
 
     }
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -42,15 +46,21 @@ class BlogAddController extends Controller
      */
     public function store(Request $request)
     {
+
+
+
         $data = $request->validate(
             [
                 'fullname' => 'required|min:2',
                 'email' => 'required|email:rfc,dns',
                 'title' => 'required',
                 'blog_post' => 'required|min:10',
-                'pub_date' => 'required|after_or_equal:today'
+                'pub_date' => 'required|after_or_equal:today',
+                'image' => 'image'
             ]
             );
+            $newFilename =  $data['image']->store('posts', 'public');
+            $data['image'] = $newFilename;
         // $blog = new BlogPost();
         // $blog->title=$data['title'];
         // $blog->inhoud=$data['blog_post'];
@@ -60,7 +70,7 @@ class BlogAddController extends Controller
         // $blog->email=$data['email'];
         // $blog->save();
 
-        $blogpost = BlogPost::create($data);
+        BlogPost::create($data);
 
         return redirect()->route('overzicht.page');
     }
@@ -73,7 +83,8 @@ class BlogAddController extends Controller
      */
     public function show($id)
     {
-        //
+        // $post = BlogPost::find($id);
+        // return view('blog.detail', ['post' => $post]);
     }
 
     /**

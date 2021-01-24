@@ -5,13 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{{ asset('/css/nav.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/postOverzicht.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('/css/contact.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('/css/detailpage.css') }}">
     <title>@yield("page_title")</title>
   </head>
   <body>
@@ -36,26 +31,14 @@
             <a class="nav-link homebtn  {{ Route::currentRouteName() == "blog.add" ? 'active' : '' }}" href="{{ route('blog.add') }}">Add new post</a>
         </li>
         </ul>      
-        @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-            <a class="btn btn-primary btn-lg active"  href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-             Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-             @csrf
-            </form>
-            @else
-                <a class="btn btn-primary btn-lg active" href="{{ route('login') }}">Login</a>
-
-                @if (Route::has('register'))
-                    <a class="btn btn-primary btn-lg active" style="background-color: red" href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
+          <a class="btn btn-primary btn-lg active"  href="{{ route('logout') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+           Logout
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+           @csrf
+          </form>
       </div>
     </nav>
   
@@ -78,5 +61,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   </body>
 </html>

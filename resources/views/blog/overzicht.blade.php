@@ -5,17 +5,19 @@
 @endsection
 
 @section('overzicht')
-<table class="table table-condensed table-bordered">
+<div class="post">
     @foreach($posts as $post)
-        <tr>
-            <td>{{ $post->title }}</td>
-            <td>{{ $post->blog_post }}</td>
-            <td>{{ $post->fullname }}</td>
-            <td>{{ $post->pub_date }}</td>
-        </tr>
+    <div class="cardMain">
+            <p class="beautyMode"><span style="font-weight: 600">Title:</span> {{ $post->title }}</p>
+            <p class="beautyMode"><span style="font-weight: 600">Inhoud:</span> {{ $post->blog_post }}</p>
+            <p class="beautyMode"><span style="font-weight: 600">Name:</span> {{ $post->fullname }}</p>
+            <p class="beautyMode"><span style="font-weight: 600">Date:</span> {{ $post->pub_date }}</p>
+            <a class="btn btn-primary btn-lg detail" href="{{ route('overzicht.detail', ['id' => $post->id ]) }}"> Detail</a>
+    </div>
     @endforeach
-</table>
-<div style="margin-left: 2%">
+</div>
+<div style="    margin-left: 3%;
+font-size: 25px;">
     {{ $posts->links() }}
 </div>
 @endsection

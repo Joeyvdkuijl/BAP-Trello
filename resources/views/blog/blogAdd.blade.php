@@ -12,11 +12,11 @@
     </div>
 @endif
 
-<form action="{{ route('blog.store') }}" method="POST">
+<form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <ul class="form-style-1">
         <li><label>Full Name <span class="required">*</span></label>
-            <input type="text" name="fullname" class="field-long @error('fullname') is-invalid @enderror" placeholder="First" value="{{ old('fullname') }}" /> 
+            <input type="text" name="fullname" class="field-long @error('fullname') is-invalid @enderror" placeholder="Random Person" value="{{ old('fullname') }}" /> 
             @error('fullname')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
@@ -38,6 +38,13 @@
             <label>Blog post <span class="required">*</span></label>
             <textarea name="blog_post" id="field5" class="field-long field-textarea @error('blog_post') is-invalid @enderror">{{ old('blog_post') }}</textarea>
             @error('blog_post')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+        </li>
+        <li>
+            <label>Image</label>
+            <input type="file" name="image" class="field-long @error('image') is-invalid @enderror"  />
+            @error('image')
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         </li>
